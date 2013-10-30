@@ -71,7 +71,25 @@ public class Text {
     paste.setText("Paste");
     paste.setMnemonic(KeyEvent.VK_P);
     paste.setToolTipText("Paste text");
+    
+    
+ // add undo menu item
+    JMenuItem undo = new JMenuItem("Undo", null);
+    undo.setMnemonic(KeyEvent.VK_Z);
+    undo.setToolTipText("Undo your last action");
+  
+    
+ // add redo menu item
+    JMenuItem redo = new JMenuItem("Redo", null);
+    redo.setMnemonic(KeyEvent.VK_Y);
+    redo.setToolTipText("Redo your last action");
      
+ // add search menu item
+    JMenuItem search = new JMenuItem("Search", null);
+    search.setMnemonic(KeyEvent.VK_F);
+    search.setToolTipText("Search through text");
+  
+
     
     
     
@@ -81,6 +99,11 @@ public class Text {
     edit.add(cut);
     edit.add(copy);
     edit.add(paste);
+    edit.add(undo);
+    edit.add(redo);
+    edit.add(search);
+    
+    
 
     // add file to the menubar
     menubar.add(file);
@@ -96,6 +119,10 @@ public class Text {
     text.setLineWrap(true);
     text.setEditable(true);
     text.setVisible(true);
+    
+    final EditList edits = new EditList(text);
+    
+    
     
     // add a scroll bar
     JScrollPane  scroll = new JScrollPane(text);
@@ -155,6 +182,28 @@ public class Text {
         }
         }
     });
+    
+    
+    // add the undo action as a new anonymous object
+    undo.addActionListener(new ActionListener( ) {
+      public void actionPerformed(ActionEvent e) {
+    	  edits.undo();
+      }   
+    }); 
+    
+    // add the redo action as a new anonymous object
+    redo.addActionListener(new ActionListener( ) {
+      public void actionPerformed(ActionEvent e) {
+        edits.redo();
+      }   
+    }); 
+    
+    // add the search action as a new anonymous object
+    search.addActionListener(new ActionListener( ) {
+      public void actionPerformed(ActionEvent e) {
+    	  final searchWindow searches = new searchWindow(frame, text);
+      }   
+    }); 
     
     
     // launch the window
