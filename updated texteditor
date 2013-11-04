@@ -138,26 +138,7 @@ public class Text {
     {
         public void actionPerformed(ActionEvent ae)
         {
-            int returnVal = fc.showOpenDialog(frame);
-
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
-                //This is where a real application would open the file.
-                try
-                {
-                    input = new BufferedReader(
-                            new InputStreamReader(
-                            new FileInputStream(
-                            file)));
-                    text.read(input, "Loading File...");      
-                }
-                catch(Exception e)
-                {       
-                    e.printStackTrace();
-                }
-            } else {
-                System.out.println("Load not complete : CANCELED");
-            }
+        	Import Importing = new Import(frame, text);
         }
     });
     
@@ -167,19 +148,9 @@ public class Text {
     {
         public void actionPerformed(ActionEvent ae)
         {
-        String save = text.getText();
-        JFileChooser chooser = new JFileChooser();
-        //chooser.setCurrentDirectory(new File("/home/me/Documents"));
-        int retrival = chooser.showSaveDialog(null);
-        if (retrival == JFileChooser.APPROVE_OPTION) {
-            try {
-                FileWriter fw = new FileWriter(chooser.getSelectedFile()+".txt");
-                fw.write(save.toString());
-                fw.close();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
+        	
+        	Export Exporting = new Export(frame, text);
+
         }
     });
     
