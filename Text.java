@@ -10,7 +10,7 @@ import javax.swing.text.DefaultEditorKit;
 
 public class Text {
 	public static BufferedReader input;
-    	public static JFileChooser fc;
+	public static JFileChooser fc;
 
   	public static void main(String[] args) {
 	  
