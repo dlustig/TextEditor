@@ -100,7 +100,7 @@ public class searchWindow  extends JDialog implements ActionListener, DocumentLi
 		}
 	}
 
-	//documentListener methods
+	//documentListener methods, updates the buttons when the user changes the document
 	public void changedUpdate(DocumentEvent d) {}
 
 	public void insertUpdate(DocumentEvent d) {
@@ -110,7 +110,7 @@ public class searchWindow  extends JDialog implements ActionListener, DocumentLi
 		updateButtons();
 	}
 
-
+	//Determines the numbe of instances in the text of the search term, then highlights the instance following the cursor
 	private void performSearch(){
 
 		String text = getDocumentText();
@@ -118,9 +118,12 @@ public class searchWindow  extends JDialog implements ActionListener, DocumentLi
 		int found = 0;
 		someFound = false;
 
+		//check that there is text to search
 		if(text != null && text.length() != 0) {
 			boolean endFound = false;
 			int index = 0;
+			
+			//loops through the document, searching for the next instance of the search text. Aknowledges if it is found, then continues searching from the index of where the word is found
 			while(!endFound) {
 				index = text.indexOf(searcher.getText(), index);
 				if(index != -1) {
@@ -131,6 +134,8 @@ public class searchWindow  extends JDialog implements ActionListener, DocumentLi
 					endFound = true;
 				}
 			}
+			
+			//update the window text
 			if(found > 0) {
 				someFound = true;
 
@@ -139,11 +144,13 @@ public class searchWindow  extends JDialog implements ActionListener, DocumentLi
 			}
 		}
 
+		//highlight the next instance of the search text.
 		highlightNext();
 
 		message.setText(result);
 	}
 
+	//extracts the string of text in the editor
 	private String getDocumentText() {
 
 		String text;
@@ -158,6 +165,7 @@ public class searchWindow  extends JDialog implements ActionListener, DocumentLi
 		return text;
 	}
 
+	//finds and highlights the next instance of the text after the cursor
 	private void highlightNext() {
 		int location = comp.getCaretPosition();
 		int size = searcher.getText().length();
@@ -203,6 +211,7 @@ public class searchWindow  extends JDialog implements ActionListener, DocumentLi
 	*Sets buttons as disabled or enabled based on a few rules:
 	*Search enabled if and only if there is text in the searcher JTextField
 	*Next and Previous enabled if this class has scanned the JTextArea for the text currently in the search box, and there were instances found
+	*Note that some unused buttons are being updated as well
 	*/
 	private void updateButtons(){
 		if(searcher.getText().equals("")) {
