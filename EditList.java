@@ -9,7 +9,7 @@ import javax.swing.undo.*;
 //the edits it saw were not-undoable (calling canUndo() would never return true). This might possibly be because
 //the class was claimed to only be supported up to Java 1.4. This is my own implementation
 //based on the description of the UndoManager on Java's oracle site. It keeps a list of
-public class EditList implements KeyListener, UndoableEditListener {
+public class EditList implements UndoableEditListener {
 
 	LinkedList<UndoableEdit> edits;
 	ListIterator<UndoableEdit> editTracker;
@@ -21,11 +21,12 @@ public class EditList implements KeyListener, UndoableEditListener {
 		editTracker = edits.listIterator();
 	}
 
-
+	//stores all undoable edits in the linked list edits
 	public void undoableEditHappened(UndoableEditEvent e) {
 		editTracker.add(e.getEdit());
 	}
 
+	//undo and redo pre-checked by whether the list iterator has a next/previous action to do
 	public boolean canRedo() {
 		return editTracker.hasNext();
 	}
@@ -34,6 +35,7 @@ public class EditList implements KeyListener, UndoableEditListener {
 		return editTracker.hasPrevious();
 	}
 
+	//Loops through the undos/redos
 	public void redo() {
 		while(canRedo()) {
 			UndoableEdit e = editTracker.next();
@@ -57,11 +59,4 @@ public class EditList implements KeyListener, UndoableEditListener {
 			}
 		}
 	}
-
-	public void keyPressed(KeyEvent k) {
-
-	}
-	public void keyReleased(KeyEvent k) {}
-	public void keyTyped(KeyEvent k) {}
-
 }
