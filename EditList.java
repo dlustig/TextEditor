@@ -63,29 +63,5 @@ public class EditList implements KeyListener, UndoableEditListener {
 	}
 	public void keyReleased(KeyEvent k) {}
 	public void keyTyped(KeyEvent k) {}
-/*
-	private static class TrackableEdit {
-		private UndoableEdit e;
-		private boolean significant;
-		public TrackableEdit(UndoableEdit pE, boolean isSignificant) {
-			e = pE;
-			significant = isSignificant;
-		}
 
-		public boolean redo() {
-			if(e.canRedo()) {
-				redo();
-				return true;
-			}
-			return false;
-		}
-
-		public boolean undo() {
-			if(e.canUndo()) {
-				undo();
-				return true;
-			}
-			return false;
-		}
-	}*/
 }
