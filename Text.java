@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 
 import javax.swing.*;
 import javax.swing.text.DefaultEditorKit;
-
+ 
 public class Text {
 	public static BufferedReader input;
 	public static JFileChooser fc;
