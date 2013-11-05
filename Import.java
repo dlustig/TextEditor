@@ -19,16 +19,16 @@ import java.util.*;
 
 public class Import  extends JDialog/*, WindowListener*/{
 	
-		//Parent window objects
-		private Window owner;
-		private Document doc;
+	//Parent window objects
+	private Window owner;
+	private Document doc;
 
-		//Swing components to be displayed
-		private JTextComponent comp;
-		private JTextField searcher;
+	//Swing components to be displayed
+	private JTextComponent comp;
+	private JTextField searcher;
 		
-		private static BufferedReader input;
-	    private static JFileChooser fc;
+	private static BufferedReader input;
+	private static JFileChooser fc;
 	
 	
 	public Import(Window window, JTextComponent pDoc) {
@@ -40,24 +40,24 @@ public class Import  extends JDialog/*, WindowListener*/{
 		
 		int returnVal = fc.showOpenDialog(window);
 
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File file = fc.getSelectedFile();
-            //This is where a real application would open the file.
-            try
-            {
-                input = new BufferedReader(
-                        new InputStreamReader(
-                        new FileInputStream(
-                        file)));
-                pDoc.read(input, "Loading File...");      
-            }
-            catch(Exception e)
-            {       
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("Load not complete : CANCELED");
-        }
+        	if (returnVal == JFileChooser.APPROVE_OPTION) {
+            		File file = fc.getSelectedFile();
+            		//This is where a real application would open the file.
+            		try
+            			{
+                			input = new BufferedReader(
+                        		new InputStreamReader(
+                			new FileInputStream(
+                        		file)));
+                			pDoc.read(input, "Loading File...");      
+        			 }
+            			catch(Exception e)
+        			{       
+                			e.printStackTrace();
+        			} else {
+        				 System.out.println("Load not complete : CANCELED");
+        			}
 		
+		}
 	}
 }
