@@ -225,26 +225,4 @@ public class searchWindow  extends JDialog implements ActionListener, DocumentLi
 		}
 	}
 
-/*
-	public void windowActivated(WindowEvent e) {
-	}
-	public void windowClosed(WindowEvent e) {
-		setVisible(false);
-		this.dispose();
-	}
-	public void windowClosing(WindowEvent e) {
-		setVisible(false);
-		this.dispose();
-	}
-	public void windowDeactivated(WindowEvent e) {
-	}
-	public void windowDeiconified(WindowEvent e) {
-		setVisible(true);
-	}
-	public void windowIconified(WindowEvent e) {
-		setVisible(false);
-	}
-	public void windowOpened(WindowEvent e) {
-	}
-*/
 }
