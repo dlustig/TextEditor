@@ -10,7 +10,7 @@ import java.util.*;
 
 //This class uses the SingleInstance design,as there should only be 1 search box per instance of the program.
 
-public class searchWindow extends JDialog implements ActionListener, DocumentListener/*, WindowListener*/{
+public class SearchWindow extends JDialog implements ActionListener, DocumentListener/*, WindowListener*/{
 
         //Constants for the button texts
         final static String SEARCH = "Search";
@@ -37,7 +37,7 @@ public class searchWindow extends JDialog implements ActionListener, DocumentLis
         private String searchText = null;//The value of the current searchable text
         private boolean someFound;//used to flag whether a search yielded any results
 
-        public searchWindow(Window window, JTextComponent pDoc) {
+        public SearchWindow(Window window, JTextComponent pDoc) {
 
                 //constructs window
                 super(window, "Search Window");
