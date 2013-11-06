@@ -54,10 +54,12 @@ public class Import  extends JDialog/*, WindowListener*/{
             			catch(Exception e)
         			{       
                 			e.printStackTrace();
-        			} else {
-        				 System.out.println("Load not complete : CANCELED");
-        			}
+        			} 
+        	}
+        	else {
+        		System.out.println("Load not complete : CANCELED");
+        	}
 		
-		}
+		
 	}
 }
