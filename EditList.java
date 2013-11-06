@@ -11,52 +11,52 @@ import javax.swing.undo.*;
 //based on the description of the UndoManager on Java's oracle site. It keeps a list of
 public class EditList implements UndoableEditListener {
 
-	LinkedList<UndoableEdit> edits;
-	ListIterator<UndoableEdit> editTracker;
-	int editCount = 0;
+        LinkedList<UndoableEdit> edits;
+        ListIterator<UndoableEdit> editTracker;
+        int editCount = 0;
 
-	public EditList(JTextComponent observed) {
-		observed.getDocument().addUndoableEditListener(this);
-		edits = new LinkedList<UndoableEdit>();
-		editTracker = edits.listIterator();
-	}
+        public EditList(JTextComponent observed) {
+                observed.getDocument().addUndoableEditListener(this);
+                edits = new LinkedList<UndoableEdit>();
+                editTracker = edits.listIterator();
+        }
 
-	//stores all undoable edits in the linked list edits
-	public void undoableEditHappened(UndoableEditEvent e) {
-		editTracker.add(e.getEdit());
-	}
+        //stores all undoable edits in the linked list edits
+        public void undoableEditHappened(UndoableEditEvent e) {
+                editTracker.add(e.getEdit());
+        }
 
-	//undo and redo pre-checked by whether the list iterator has a next/previous action to do
-	public boolean canRedo() {
-		return editTracker.hasNext();
-	}
+        //undo and redo pre-checked by whether the list iterator has a next/previous action to do
+        public boolean canRedo() {
+                return editTracker.hasNext();
+        }
 
-	public boolean canUndo() {
-		return editTracker.hasPrevious();
-	}
+        public boolean canUndo() {
+                return editTracker.hasPrevious();
+        }
 
-	//Loops through the undos/redos
-	public void redo() {
-		while(canRedo()) {
-			UndoableEdit e = editTracker.next();
-			if(e.canRedo()) {
-				e.redo();
-			}
-			if(e.isSignificant()) {
-				return;
-			}
-		}
-	}
+        //Loops through the undos/redos
+        public void redo() {
+                while(canRedo()) {
+                        UndoableEdit e = editTracker.next();
+                        if(e.canRedo()) {
+                                e.redo();
+                        }
+                        if(e.isSignificant()) {
+                                return;
+                        }
+                }
+        }
 
-	public void undo() {
-		while(canUndo()) {
-			UndoableEdit e = editTracker.previous();
-			if(e.canUndo()) {
-				e.undo();
-			}
-			if(e.isSignificant()) {
-				return;
-			}
-		}
-	}
+        public void undo() {
+                while(canUndo()) {
+                        UndoableEdit e = editTracker.previous();
+                        if(e.canUndo()) {
+                                e.undo();
+                        }
+                        if(e.isSignificant()) {
+                                return;
+                        }
+                }
+        }
 }
