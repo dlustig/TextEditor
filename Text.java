@@ -165,7 +165,7 @@ public class Text {
 		// add the search action as a new anonymous object
 		search.addActionListener(new ActionListener( ) {
 			public void actionPerformed(ActionEvent e) {
-				final searchWindow searches = new searchWindow(frame, text);
+				final SearchWindow searches = new SearchWindow(frame, text);
 		        }   
 		}); 
 		    
