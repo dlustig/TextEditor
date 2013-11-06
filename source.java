@@ -11,22 +11,22 @@ public class source
     public source()
     {
 
-        fc = new JFileChooser();        
+        fc = new JFileChooser();
     }
 
     private void displayGUI()
     {
-    	
-    	
+            
+            
         final JFrame frame = new JFrame("Import/Save file");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        final JTextArea tarea = new JTextArea(10, 10);      
+        final JTextArea tarea = new JTextArea(10, 10);
 
         
         //load function
         JButton readButton = new JButton("LOAD FILE");
-        readButton.addActionListener(new ActionListener()       
+        readButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent ae)
             {
@@ -41,10 +41,10 @@ public class source
                                 new InputStreamReader(
                                 new FileInputStream(
                                 file)));
-                        tarea.read(input, "Loading File...");      
+                        tarea.read(input, "Loading File...");
                     }
                     catch(Exception e)
-                    {       
+                    {
                         e.printStackTrace();
                     }
                 } else {
@@ -86,7 +86,7 @@ public class source
 
     public static void main(String... args)
     {
-        SwingUtilities.invokeLater(new Runnable())
+        SwingUtilities.invokeLater(new Runnable()
         {
             public void run()
             {
