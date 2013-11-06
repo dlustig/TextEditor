@@ -3,12 +3,12 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class source
+public class Source
 {
     private BufferedReader input;
     private JFileChooser fc;
 
-    public source()
+    public Source()
     {
 
         fc = new JFileChooser();
