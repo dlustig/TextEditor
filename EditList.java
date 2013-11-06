@@ -11,9 +11,9 @@ import javax.swing.undo.*;
 //based on the description of the UndoManager on Java's oracle site. It keeps a list of
 public class EditList implements UndoableEditListener {
 
-        LinkedList<UndoableEdit> edits;
-        ListIterator<UndoableEdit> editTracker;
-        int editCount = 0;
+        private LinkedList<UndoableEdit> edits;
+        private ListIterator<UndoableEdit> editTracker;
+        private int editCount = 0;
 
         public EditList(JTextComponent observed) {
                 observed.getDocument().addUndoableEditListener(this);
